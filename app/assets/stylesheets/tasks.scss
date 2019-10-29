@@ -349,8 +349,9 @@ html .clear-completed:active {
 /*
   Hack to remove background from Mobile Safari.
   Can't use it globally since it destroys checkboxes in Firefox
+  This issue is what drives web developers crazy!
 */
-@media screen and (-webkit-min-device-pixel-ratio:0) {
+@media screen {
   .toggle-all,
   .todo-list li .toggle {
     background: none;
@@ -358,6 +359,8 @@ html .clear-completed:active {
 
   .todo-list li .toggle {
     height: 40px;
+    -webkit-appearance: checkbox;
+    appearance: checkbox;
   }
 
   .toggle-all {
@@ -366,6 +369,14 @@ html .clear-completed:active {
     -webkit-appearance: none;
     appearance: none;
   }
+
+  .todo-list li .toggle:after {
+  content:none;
+}
+
+.todo-list li .toggle:checked:after {
+  content: none;
+}
 }
 
 @media (max-width: 430px) {
